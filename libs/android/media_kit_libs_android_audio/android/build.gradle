@@ -56,6 +56,34 @@ task downloadDependencies(type: Exec)  {
         }
         outputDir.mkdirs()
 
+        // -------------------------------------------------------------------------
+        // DEV-ONLY LOCAL OVERRIDE — release cleanup required.
+        // -------------------------------------------------------------------------
+        // Presence of *.jar files in android/prebuilt/ bypasses the GitHub
+        // release download, so a locally-built libmpv (with custom C changes
+        // e.g. the audio_metrics spectrum[256] field) can be wired into a
+        // VoyTrace APK without publishing.
+        //
+        // Cleanup before release (see VoyTrace/pubspec.yaml dev-override
+        // comment for the full checklist): publish a new release tag on
+        // eagleboost/libmpv-android-audio-build, update the URLs + MD5s
+        // below, then delete prebuilt/ and this branch.
+        // -------------------------------------------------------------------------
+        def localPrebuilt = file("${project.projectDir}/prebuilt")
+        def localJars = localPrebuilt.exists()
+            ? localPrebuilt.listFiles({ f -> f.name.endsWith(".jar") } as FileFilter)
+            : new File[0]
+        if (localJars.length > 0) {
+            println "Using local prebuilt JARs from: ${localPrebuilt}"
+            localJars.each { f ->
+                copy {
+                    from f
+                    into outputDir
+                }
+            }
+            return
+        }
+
         // Download all *.jar dependencies & verify their MD5 checksums.
         def filesToDownload = [
             ["url": "https://github.com/media-kit/libmpv-android-audio-build/releases/download/v1.1.9/default-arm64-v8a.jar", "md5": "3057a0552b6338689fd563da4d8e2d68", "destination": file("$buildDir/v1.1.9/default-arm64-v8a.jar")],

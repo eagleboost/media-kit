@@ -32,3 +32,6 @@ build/
 
 # Libraries should not include pubspec.lock, per https://dart.dev/guides/libraries/private-files#pubspeclock.
 /pubspec.lock
+
+# Local libmpv build override (dev-only ¡ª see build.gradle for context)
+libs/android/media_kit_libs_android_audio/android/prebuilt/
