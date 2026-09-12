@@ -58,10 +58,10 @@ task downloadDependencies(type: Exec)  {
 
         // Download all *.jar dependencies & verify their MD5 checksums.
         def filesToDownload = [
-            ["url": "https://github.com/eagleboost/libmpv-android-audio-build/releases/download/v1.4.3/default-arm64-v8a.jar", "md5": "cf4e76f88b9beffb90f051a928530f92", "destination": file("$buildDir/v1.4.3/default-arm64-v8a.jar")],
-            ["url": "https://github.com/eagleboost/libmpv-android-audio-build/releases/download/v1.4.3/default-armeabi-v7a.jar", "md5": "ac0c804adf501b514140ed304ef530f9", "destination": file("$buildDir/v1.4.3/default-armeabi-v7a.jar")],
-            ["url": "https://github.com/eagleboost/libmpv-android-audio-build/releases/download/v1.4.3/default-x86_64.jar", "md5": "b5d222d267ae6eefc51470b6676e3e56", "destination": file("$buildDir/v1.4.3/default-x86_64.jar")],
-            ["url": "https://github.com/eagleboost/libmpv-android-audio-build/releases/download/v1.4.3/default-x86.jar", "md5": "6960dd077ecf00c929ed0bbc8dc74c85", "destination": file("$buildDir/v1.4.3/default-x86.jar")]
+            ["url": "https://github.com/eagleboost/libmpv-android-audio-build/releases/download/v1.4.4/default-arm64-v8a.jar", "md5": "5b40a8784774b72df14bc4cfca80428c", "destination": file("$buildDir/v1.4.4/default-arm64-v8a.jar")],
+            ["url": "https://github.com/eagleboost/libmpv-android-audio-build/releases/download/v1.4.4/default-armeabi-v7a.jar", "md5": "7cec9bf80cc2551e504620f482a79faa", "destination": file("$buildDir/v1.4.4/default-armeabi-v7a.jar")],
+            ["url": "https://github.com/eagleboost/libmpv-android-audio-build/releases/download/v1.4.4/default-x86_64.jar", "md5": "886280e1c0ffb2b796335f2104147bd6", "destination": file("$buildDir/v1.4.4/default-x86_64.jar")],
+            ["url": "https://github.com/eagleboost/libmpv-android-audio-build/releases/download/v1.4.4/default-x86.jar", "md5": "ccccc32f6fd1dd8c88c0ab42cd383084", "destination": file("$buildDir/v1.4.4/default-x86.jar")]
         ]
 
         filesToDownload.each { fileInfo ->
