@@ -57,12 +57,12 @@ task downloadDependencies(type: Exec)  {
         outputDir.mkdirs()
 
         // Download all *.jar dependencies & verify their MD5 checksums.
-        // v1.4.12: + af_soundlab 原生 EQ 滤镜 + aresample/firequalizer
+        // v1.4.13: a2 符号修复（RBJ peaking 不稳定→杂音）
         def filesToDownload = [
-            ["url": "https://github.com/eagleboost/libmpv-android-audio-build/releases/download/v1.4.12/default-arm64-v8a.jar", "md5": "7d7ad6a0e42e661075c7d817348fd5e0", "destination": file("$buildDir/v1.4.12/default-arm64-v8a.jar")],
-            ["url": "https://github.com/eagleboost/libmpv-android-audio-build/releases/download/v1.4.12/default-armeabi-v7a.jar", "md5": "ca70e688f47c9c504ec76d2c5e3d8dd3", "destination": file("$buildDir/v1.4.12/default-armeabi-v7a.jar")],
-            ["url": "https://github.com/eagleboost/libmpv-android-audio-build/releases/download/v1.4.12/default-x86_64.jar", "md5": "d65a8ba88ad275a46ab6d2d067dc7540", "destination": file("$buildDir/v1.4.12/default-x86_64.jar")],
-            ["url": "https://github.com/eagleboost/libmpv-android-audio-build/releases/download/v1.4.12/default-x86.jar", "md5": "77da25918588711f1fd59f89b3b315ae", "destination": file("$buildDir/v1.4.12/default-x86.jar")]
+            ["url": "https://github.com/eagleboost/libmpv-android-audio-build/releases/download/v1.4.13/default-arm64-v8a.jar", "md5": "890684f8f0ba678bc351fa8ca7cc9a75", "destination": file("$buildDir/v1.4.13/default-arm64-v8a.jar")],
+            ["url": "https://github.com/eagleboost/libmpv-android-audio-build/releases/download/v1.4.13/default-armeabi-v7a.jar", "md5": "3f3f0315bdfa3b248453c1162b137f3f", "destination": file("$buildDir/v1.4.13/default-armeabi-v7a.jar")],
+            ["url": "https://github.com/eagleboost/libmpv-android-audio-build/releases/download/v1.4.13/default-x86_64.jar", "md5": "325a8eac72751dabc05e477b5e390a0e", "destination": file("$buildDir/v1.4.13/default-x86_64.jar")],
+            ["url": "https://github.com/eagleboost/libmpv-android-audio-build/releases/download/v1.4.13/default-x86.jar", "md5": "57da7a427377bd0552332f20a7e570fc", "destination": file("$buildDir/v1.4.13/default-x86.jar")]
         ]
 
         filesToDownload.each { fileInfo ->
